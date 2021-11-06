@@ -1,0 +1,24 @@
+{
+  "name": "parceros_back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adriedugompin/parceros_back.git"
+  },
+  "author": "Adrian Eduardo Gomez Pineda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adriedugompin/parceros_back/issues"
+  },
+  "homepage": "https://github.com/adriedugompin/parceros_back#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "morgan": "^1.10.0"
+  }
+}
