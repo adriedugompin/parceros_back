@@ -1,20 +1,30 @@
-const {Router} = require('express');
+
+const { Router } = require('express');
 const router = Router();
+const { body } = require('express-validator');
+const { salesController } = require('../controllers');
+const verifyToken = require('../middlewares/verifyToken');
 
-router.get('/', (req, res) => {
-    res.json({ msg: "todos las ventas" });
-})
+router.get('/:id', verifyToken, salesController.getSale);
 
-router.post('/', (req, res) => {
-    res.json({ msg: "venta insertada" });
-})
+router.get('/', salesController.getSales);
 
-router.put('/', (req, res) => {
-    res.json({ msg: "venta actualizada" });
-})
+router.post('/',
+    body('valor', 'El valor es requerido y debe ser numerico').exists(),
+    body('nombreCliente', 'nombreCliente es requerido').exists(),
+    body('idCliente', 'idCliente es requerido').exists(),
+    body('idVendedor', 'idVendedor es requerido').exists(),
+    body('productos', 'productos son requeridos').exists().notEmpty()
+    , verifyToken, salesController.createSale);
 
-router.delete('/', (req, res) => {
-    res.json({ msg: "venta eliminada" });
-})
+router.put('/:id',
+    body('valor', 'El valor es requerido y debe ser numerico').exists(),
+    body('nombreCliente', 'nombreCliente es requerido').exists(),
+    body('idCliente', 'idCliente es requerido').exists(),
+    body('idVendedor', 'idVendedor es requerido').exists(),
+    body('productos', 'productos son requeridos').exists().notEmpty()
+    ,verifyToken, salesController.updateSale);
+
+router.delete('/:id', verifyToken, salesController.deleteSale);
 
 module.exports = router;
