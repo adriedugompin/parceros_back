@@ -31,7 +31,7 @@ const getProducts = async (req, res) => {
     try {
         let products = await ProductSchema.find();
         res.status(200).json({ data: products });
-    }
+    } 
     catch (err) {
         res.status(404).json({
             error: {
