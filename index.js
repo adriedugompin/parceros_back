@@ -46,9 +46,9 @@ app.get('/', (req, res) => {
 //importamos todas las rutas que definimos en ./routes/index.js
 const routes = require('./routes');
 
-/*usando las rutas de productos para toda las peticiones 
+/*usando las rutas de productos para toda las peticiones
  que llegen a nuestra API con /productos */
 app.use('/productos', routes.productsRouter);
 app.use('/ventas', routes.salesRouter);
 app.use('/usuarios', routes.usersRouter);
-app.use('/auth', routes.authRouter);
+app.use('/auth', routes.authRouter)
